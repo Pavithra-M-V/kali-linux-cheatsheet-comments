@@ -1,0 +1,15 @@
+The amap command in Kali Linux is an application fingerprinting tool.
+It’s used to identify applications and services running on open ports of a target system.
+
+🔹 What does amap do?
+
+While tools like nmap can tell you what ports are open and sometimes guess the service, amap goes further:
+
+It probes open ports with special triggers.
+
+Tries to fingerprint the exact application/protocol behind the port.
+
+Useful when services are running on non-standard ports (e.g., HTTP running on port 8081).
+
+🔹 Basic Syntax
+amap [options] <target> <port>

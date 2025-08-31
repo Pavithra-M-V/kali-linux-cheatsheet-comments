@@ -1,0 +1,11 @@
+what is cisco-torch?
+
+    Cisco-torch is a mass scanner tool made for security testing of Cisco network devices such as routers, switches, and firewalls.
+    It’s often used by penetration testers, researchers, or network administrators to check whether Cisco devices are exposed to vulnerabilities or weak credentials.
+    Cisco-torch = Cisco device scanner + fingerprinting tool + password tester for Telnet, SSH, SNMP, HTTP/HTTPS, NTP, and TFTP.
+    
+Why is it useful?
+
+    Helps admins identify misconfigured devices and close security holes.
+    Shows if devices still use default passwords or insecure services.
+    Useful for penetration testers during a network security audit.
