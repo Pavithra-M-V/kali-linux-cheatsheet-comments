@@ -1,11 +1,47 @@
-what is cisco-torch?
+What is cisco-torch?
 
-    Cisco-torch is a mass scanner tool made for security testing of Cisco network devices such as routers, switches, and firewalls.
-    It’s often used by penetration testers, researchers, or network administrators to check whether Cisco devices are exposed to vulnerabilities or weak credentials.
-    Cisco-torch = Cisco device scanner + fingerprinting tool + password tester for Telnet, SSH, SNMP, HTTP/HTTPS, NTP, and TFTP.
-    
-Why is it useful?
+    Cisco-Torch is a mass scanner designed specifically for discovering and fingerprinting Cisco network devices.
+    It can scan for services such as Telnet, SSH, SNMP, HTTP, HTTPS, NTP, and TFTP and can also attempt dictionary-based attacks on these services.
+    It is included in Kali Linux by default.
 
-    Helps admins identify misconfigured devices and close security holes.
-    Shows if devices still use default passwords or insecure services.
-    Useful for penetration testers during a network security audit.
+Why Use Cisco-Torch?
+
+-Identify Cisco devices on a network.
+
+-Perform penetration testing and security auditing.
+
+-Detect misconfigured services or weak passwords.
+
+-Quickly enumerate multiple services on a network.
+
+Installation (Kali Linux)
+
+Cisco-Torch usually comes pre-installed in Kali Linux.
+If not:
+
+    sudo apt update
+    sudo apt install cisco-torch
+
+Usage
+
+Basic Scan:
+
+    cisco-torch <target-IP> -A
+
+Options:
+
+<target-IP> → IP address or network range of target devices
+
+-A → Automatically scan all supported services
+
+-h → Display help menu
+
+Example:
+
+    cisco-torch 192.168.1.1 -A
+
+Notes / Caution
+
+Only use on networks you own or have explicit permission to test.
+
+Results can help administrators harden Cisco devices by disabling unused services and enforcing stronger authentication.
