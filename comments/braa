@@ -1,0 +1,44 @@
+🔹 What is braa?
+
+-braa is a SNMP mass scanner.
+
+-It is designed to quickly query a large number of hosts to see if they respond to SNMP (Simple Network Management Protocol).
+
+-Very useful in network reconnaissance and penetration testing to find devices (routers, switches, printers, servers, IoT) that have SNMP enabled.
+
+🔹 How it works
+
+-SNMP is used for network management (to read info like uptime, system name, interfaces, etc.).
+
+-Many devices run SNMP with weak or default community strings (like public or private).
+
+-braa sends queries to multiple IPs in parallel → extremely fast scanning.
+
+🔹 Usage Syntax
+
+    braa <community>@<IP>/<OID>
+
+community → SNMP community string (like a password, often public)
+
+IP → target IP or network range
+
+OID → Object Identifier (defines what info you want, e.g., system name, uptime)
+
+🔹 Example
+braa public@192.168.1.1/.1.3.6.1.2.1.1.1.0
+
+This queries device 192.168.1.1 with community string public for the OID .1.3.6.1.2.1.1.1.0 (which usually returns system description).
+
+To scan a subnet:
+
+braa public@192.168.1.0/24
+
+This will try SNMP requests against all devices in the 192.168.1.x range.
+
+🔹 Why it’s useful
+
+-Finds devices with SNMP exposed
+
+-Detects misconfigured routers/switches
+
+-Helps pentesters expand their attack surface (since SNMP can reveal lots of system info)
