@@ -1,0 +1,27 @@
+🔹 What is bing-ip2hosts?
+
+-It is a small tool in Kali Linux that helps you find out which websites are running on the same IP address.
+-It does this by asking the Bing search engine for information.
+
+🔹 What it can do
+
+-Find subdomains → Example: mail.example.com, shop.example.com.
+
+-Find other websites on the same server → Example: one IP may host abc.com, xyz.com, and 123.com.
+
+-Help hackers/pentesters → It gives a bigger list of targets to test during security checks.
+
+🔹 Why it’s useful
+
+-If a company has many domains on one server, you can discover them.
+
+-If one website looks safe, another site on the same IP may be weak and give you an entry point.
+
+-It’s fast and doesn’t need any special API key → just works directly with Bing search.
+
+✅ In short:
+-bing-ip2hosts is a simple hacking/recon tool that uses Bing search to find all websites connected to a single IP address.
+
+The basic syntax is:
+
+bing-ip2hosts <IP>
