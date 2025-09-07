@@ -1,0 +1,56 @@
+What is DMitry? ❓
+DMitry is a powerful, open-source command-line tool for information gathering on UNIX/(GNU) Linux systems, including Kali Linux. Coded purely in C, it collects as much information as possible about a target host automatically. This includes:
+
+Whois lookups for domain and IP information 🔍
+
+    -Subdomain enumeration 🏷️
+
+    -Email address discovery 📧
+
+    -Uptime information ⏱️
+
+    -TCP port scanning 🔌
+
+    -Netcraft data retrieval 🕵️‍♂️
+
+    -DMitry helps consolidate multiple reconnaissance commands into one quick, easy tool saving time and effort.
+
+Why Use DMitry? 🎯
+
+    -Efficiency: Automates the tedious process of gathering diverse target info with a single command.
+
+    -Consolidation: Combines many reconnaissance techniques, eliminating the need to run multiple tools.
+
+    -Open Source: Free to use, modify, and extend.
+
+    -Penetration Testing: Vital tool for ethical hackers and security professionals during the reconnaissance phase.
+
+    -Lightweight: Small footprint (~50 KB), fast and effective on multiple platforms.
+
+How to Use DMitry?
+⚙️
+Installation:
+
+DMitry comes pre-installed on Kali Linux, but if missing, install with:
+
+    sudo apt install dmitry
+
+Basic Command Syntax
+
+    dmitry [options] target
+
+Commonly Used Options
+
+-w : Who is lookup on domain name
+
+-i : Who is lookup on IP address
+
+-n : Retrieve Netcraft info
+
+-s : Search for subdomains
+
+-e : Search for email addresses connected to the domain
+
+-p : Perform a TCP port scan
+
+-o filename : Output results to the specified file
