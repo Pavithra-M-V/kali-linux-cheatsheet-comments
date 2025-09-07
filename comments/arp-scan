@@ -1,0 +1,66 @@
+🌐 arp-scan in Kali Linux
+
+📌 What is arp-scan?  
+-**arp-scan** is a command-line tool for **network discovery** and **host enumeration**.
+
+- It works by sending **ARP requests** on the local network and collecting responses.
+
+- Unlike TCP/UDP scanners (like `nmap`), `arp-scan` works at **Layer 2 (Data Link Layer)**, making it fast and reliable for finding devices in the same subnet.
+
+---
+
+❓ Why use arp-scan?
+
+- ⚡ **Fast network discovery** → Finds all active hosts on a subnet in seconds.
+- 🖧 **Works when ICMP (ping) is blocked** → Still finds hosts using ARP.
+- 🔒 **Penetration testing** → Quickly enumerates live devices on LAN.
+- 🎯 **Accurate** → ARP replies come directly from devices, so it avoids false negatives.
+
+---
+
+⚙️ How does arp-scan work?
+
+1. **Sends ARP requests** → Asks “Who has IP X.X.X.X?” for every address in the target range.
+2. **Captures ARP replies** → Devices that own those IPs respond with their **MAC address**.
+3. **Displays results** → Shows IP, MAC, and (if available) vendor information.
+
+⚠️ Limitation: ARP is **not routable** (Layer 2 only). This means `arp-scan` only works on the **local subnet** and **cannot scan beyond a router/gateway**.
+
+---
+
+🖥️ Installation (Kali Linux)  
+`arp-scan` comes pre-installed in Kali Linux.  
+If missing:
+
+sudo apt update
+sudo apt install arp-scan
+
+📝 Usage Examples
+
+1. Scan your local network (automatic interface detection)
+
+sudo arp-scan --localnet
+
+2. Scan with a specific interface
+
+sudo arp-scan --interface=eth0 --localnet
+
+3. Scan a custom IP range
+
+sudo arp-scan 192.168.1.0/24
+
+4. Scan specific IPs only
+
+sudo arp-scan 192.168.1.10 192.168.1.20
+
+5. Update vendor database
+
+sudo arp-scan --update
+
+🔑 Summary
+
+What → arp-scan is a network discovery tool that uses ARP to find active devices.
+
+Why → Fast, reliable, and works even when ping/ICMP is blocked.
+
+How → Sends ARP requests and collects replies at Layer 2.
