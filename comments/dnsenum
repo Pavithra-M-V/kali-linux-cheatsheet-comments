@@ -1,0 +1,69 @@
+What is dnsenum? ❓
+
+    dnsenum is a multithreaded Perl script designed for DNS information enumeration of domains. It helps gather as much DNS-related information as possible about a target domain, useful for penetration testing, security assessments, and network reconnaissance.
+
+Key features include:
+
+    -Retrieving host IP addresses (A records) 🌐
+
+    -Finding name servers (NS records) 📡
+
+    -Getting mail exchange servers (MX records) 📧
+
+    -Performing AXFR zone transfers to get domain data 🔄
+
+    -Enumerating subdomains via brute force and Google scraping 🔍
+
+    -Discovering IP blocks and performing Whois on them 🕵️‍♂️
+
+    -Reverse DNS lookups on network ranges🔄
+
+Why Use dnsenum? 🎯
+
+    -Comprehensive DNS information gathering for security testing
+
+    -Automates and speeds up DNS reconnaissance with multithreading
+
+    -Helpful for discovering hidden subdomains and mail servers
+
+    -Provides critical data for penetration testers and ethical hackers
+
+    -Generates output in formats like XML for further analysis or integration
+
+    -Pre-installed in Kali Linux, easy to use and extend
+
+How to Use dnsenum ? 🛠️
+
+Installation
+Usually pre-installed in Kali Linux. To install if missing:
+
+bash
+sudo apt update
+sudo apt install dnsenum
+
+Basic Command
+
+    dnsenum example.com
+
+Runs basic DNS enumeration on the domain example.com.
+
+Important Options
+--enum : Perform comprehensive enumeration including subdomains, NS, MX, Google scraping, WHOIS.
+
+-o <file> : Save output to a file (supports XML format).
+
+--noreverse : Skip reverse DNS lookup to speed up the scan.
+
+-f <file> : Use a file with subdomains for brute force discovery.
+
+--dnsserver <server> : Specify a custom DNS server to use.
+
+--threads <num> : Number of threads for parallel queries (default varies).
+
+Example Usage
+bash
+dnsenum --enum -o output.xml example.com
+Performs full enumeration on example.com and saves results in output.xml.
+
+Stopping Execution
+Press CTRL + C to interrupt dnsenum at any time.
