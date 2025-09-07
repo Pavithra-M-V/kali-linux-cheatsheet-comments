@@ -40,7 +40,7 @@ Example:
 
     cisco-torch 192.168.1.1 -A
 
-Notes / Caution
+Notes / Caution:
 
 Only use on networks you own or have explicit permission to test.
 
