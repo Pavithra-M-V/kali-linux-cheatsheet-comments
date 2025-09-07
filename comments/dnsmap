@@ -1,0 +1,69 @@
+🔹 What is dnsmap?
+
+        1.dnsmap is a subdomain brute-forcing tool included in Kali Linux.
+        2.It helps penetration testers and security researchers discover hidden subdomains of a target domain.
+        3.These subdomains may host applications, test environments, or services that are not visible to the public but could be potential entry points for attackers.
+
+🔹 Why use dnsmap?
+
+    -To perform information gathering during penetration testing.
+
+    -Hidden subdomains may expose:
+
+    -Development servers (e.g., dev.example.com)
+
+    -VPN portals (e.g., vpn.example.com)
+
+    -Email servers (e.g., mail.example.com)
+
+    -Increases the attack surface by revealing overlooked services.
+
+    -Quick and lightweight tool compared to other enumeration tools.
+
+🔹 How does dnsmap work?
+
+-dnsmap uses a wordlist of possible subdomain names (e.g., mail, www, vpn, dev).
+
+    -It appends each word from the list to the target domain and performs DNS resolution.
+
+    -If a subdomain resolves successfully, it is reported as “found.”
+
+    -Results can be saved for further analysis.
+
+🔹 Syntax
+
+    dnsmap <target_domain> [options]
+
+🔹 Options
+
+Option Description
+-w <wordlist> Use a custom wordlist for subdomain brute-forcing
+
+    -r Save results into a file (default: ./dnsmap/)
+
+    -d <delay> Add delay between DNS queries (to bypass rate limiting)
+
+🔹 Usage Examples
+
+✅ Basic Scan
+dnsmap example.com
+
+Uses the built-in wordlist to find subdomains.
+
+✅ Custom Wordlist
+dnsmap example.com -w /usr/share/wordlists/dnsmap.txt
+
+Improves accuracy by using your own wordlist.
+
+✅ Save Results
+dnsmap example.com -r
+
+Outputs discovered subdomains into the dnsmap/ directory.
+
+🔹 Limitations:
+
+    -Dependent on the quality of wordlists
+
+    -Cannot perform zone transfers (use dnsenum for that)
+
+    -May be detected and blocked by WAF/IDS`
