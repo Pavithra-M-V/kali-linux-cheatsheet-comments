@@ -1,0 +1,45 @@
+🔹 What is enumiax?
+
+    -enumiax is a small CLI tool for enumerating and testing IAX2 (Inter-Asterisk eXchange) servers (Asterisk PBX protocol).
+    -It automates sending IAX registration/authentication attempts to discover valid usernames and check for weak credentials.
+
+🔹 Why use enumiax?
+
+    -Recon for VoIP: quickly find valid IAX accounts on Asterisk/VoIP hosts.
+
+    -Efficiency: automates many username/password attempts (wordlists, generation) so you don’t handcraft packets.
+
+    -Pre-exploit discovery: valid credentials or accounts can be used for follow-up (within scope) — e.g., further authentication tests or pivoting.
+
+🔹 How to install?
+
+Kali usually includes enumiax. Install with apt:
+
+    sudo apt update
+    sudo apt install enumiax
+
+🔹Typical usage & common options
+
+Common usage patterns:
+
+1. Run a dictionary/wordlist attack against an IAX host:
+
+   enumiax -d /path/to/wordlist.txt 192.168.1.100
+
+2. Use sequential username generation (charmap-based) if supported:
+
+   enumiax -g 192.168.1.100
+
+3. Specify port if non-standard:
+
+   enumiax -p 4569 192.168.1.100
+
+🔹Typical flags:
+
+    1. -d <wordlist> : dictionary/wordlist to try
+
+    2. -p <port> : target UDP port (IAX2 default: 4569)
+
+    3. -t <timeout> or -T <threads> : timing/parallelism controls (varies)
+
+    4. -v : verbose/debug output
