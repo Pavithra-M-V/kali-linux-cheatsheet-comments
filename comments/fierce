@@ -60,5 +60,3 @@ Run fierce -h or fierce --help on your installed version to see exact flags. Typ
     -IP blocks discovered: use these ranges as targets for subsequent scanning (nmap, web recon).
 
     -No findings: doesn’t mean nothing exists — combine with other tools (Sublist3r, subfinder, crt.sh) for broader coverage.
-
-s
