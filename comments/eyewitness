@@ -1,0 +1,64 @@
+🔹 What is EyeWitness?
+
+    -EyeWitness is a reconnaissance tool that takes screenshots of web pages/services, captures basic server headers, and attempts to detect default credentials or interesting strings.
+
+    -It accepts plain URL lists, nmap XML, or other scan output and produces an HTML report with screenshots and notes. EyeWitness is commonly packaged for Kali and maintained in public GitHub repos/forks.
+
+🔹 Why use EyeWitness?
+
+    -Fast visual reconnaissance: screenshots let you quickly triage many hosts/services to find management consoles, default pages, or misconfigured apps without manually visiting each URL.
+
+    -Reporting: generates browsable HTML reports (screenshots + headers + notes) that are useful for pentest deliverables.
+
+    -Pipeline-friendly: it can consume nmap output or URL lists from other discovery tools, so it fits into automated recon workflows.
+
+🔹 How to install?
+
+1. Kali often includes EyeWitness packages; common ways to get it:
+
+From Kali repo (package):
+
+    sudo apt update
+    sudo apt install eyewitness
+
+(Also installs required components like geckodriver on some builds.)
+
+2. From the official/active GitHub repo (if you want latest):
+
+   git clone https://github.com/RedSiege/EyeWitness.git
+   cd EyeWitness
+   ./EyeWitness.py --help
+
+🔹 How — Basic usage & flags
+
+Run EyeWitness.py --help (or eyewitness --help) for exact flags in your version.
+
+Common invocation patterns:
+
+1.  Take screenshots from a file with URLs
+
+        ./EyeWitness.py -f urls.txt --web
+
+2.  Use nmap XML as input
+
+        ./EyeWitness.py -x nmap_scan.xml --web
+
+3.  Set timeout / threads / save location (examples)
+
+        ./EyeWitness.py -f urls.txt --timeout 10 --threads 10 -d /path/to/output
+
+🔹 Typical useful flags (names differ slightly between forks):
+
+    1. -f <file> → input file of URLs (one per line)
+
+    2.-x <nmap.xml> → parse nmap XML output
+
+    3. --web → screenshot web pages (headless browser mode)
+
+    4.--timeout <seconds> → page render timeout
+
+    5.--threads <n> → parallelism/concurrency
+
+    6.-d <dir> → output directory for screenshots & report
+
+EyeWitness will render pages (headless browser), capture a screenshot, grab simple server headers, and note default credentials if built-in signature matches.
