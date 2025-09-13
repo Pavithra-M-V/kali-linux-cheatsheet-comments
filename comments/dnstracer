@@ -1,0 +1,53 @@
+🔹 What is tracer?
+
+    -DNStracer is a command-line tool used in DNS (Domain Name System) analysis.
+
+    -It traces the DNS delegation path from the root servers down to the authoritative DNS server of a domain.
+
+    -Unlike a normal DNS lookup (which just gives the result), dnstracer shows which DNS servers were queried at each step in the resolution chain.
+
+🔹 Why use DNStracer?
+
+    -DNS Troubleshooting
+
+    -Helps identify where DNS resolution issues occur (e.g., wrong delegation, misconfigured DNS servers).
+
+    -Security Assessment
+
+    -During penetration testing or reconnaissance, it helps map the DNS infrastructure of a target.
+
+    -Can reveal hidden or misconfigured DNS servers.
+
+    -Learning & Research
+
+    -Useful for understanding how DNS resolution works step by step (root → TLD → domain authoritative servers).
+
+🔹 How to use dnstracer in Kali Linux?
+
+🔸 Basic Syntax
+
+        dnstracer [options] domain-name
+
+🔸 Common Options
+
+    -s <server> → Start tracing from a specific DNS server instead of default root.
+
+    -o → Show only one IP per DNS server.
+
+    -r → Disable recursion.
+
+    -v → Verbose output (more details).
+
+🔸 Example Usages
+
+1.Trace DNS for example.com
+
+    dnstracer example.com
+
+2.Trace using Google DNS (8.8.8.8) as the starting server
+
+    dnstracer -s 8.8.8.8 example.com
+
+3.Show verbose output
+
+    dnstracer -v example.com

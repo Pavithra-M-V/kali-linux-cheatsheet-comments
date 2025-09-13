@@ -1,6 +1,6 @@
-🔹 What is dnsrecon?
+🔹 What is DNSrecon?
 
-      dnsrecon is a Python-based DNS reconnaissance and enumeration script used to gather DNS-related information about a domain: standard records (A, MX, NS, SOA, TXT, etc.), zone transfers, wildcard checks, DNSSEC info, subdomain brute-forcing, reverse lookups, and more. It’s included in Kali and widely used by pen-testers and red-teamers.
+      DNSrecon is a Python-based DNS reconnaissance and enumeration script used to gather DNS-related information about a domain: standard records (A, MX, NS, SOA, TXT, etc.), zone transfers, wildcard checks, DNSSEC info, subdomain brute-forcing, reverse lookups, and more. It’s included in Kali and widely used by pen-testers and red-teamers.
 
 Key capabilities:
 
