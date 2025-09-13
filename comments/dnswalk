@@ -1,0 +1,51 @@
+✅ What is dnswalk?
+
+    -dnswalk is a DNS zone file analyzer and consistency checker.
+
+    -It performs a recursive DNS zone walk, verifying records and checking for common misconfigurations.
+
+    -Think of it as a lint tool for DNS zones: it crawls through the DNS hierarchy and highlights errors or warnings.
+
+✅ Why use dnswalk?
+
+    -DNS Security Auditing
+
+    -Detects misconfigurations that attackers could exploit (e.g., lame delegations, missing glue records).
+
+    -Troubleshooting & Monitoring
+
+    -Helps DNS administrators ensure that the zone data is consistent and follows best practices.
+
+    -Learning DNS Structure
+
+    -Useful for students or researchers to understand DNS zones and their integrity checks.
+
+✅ How to use dnswalk in Kali Linux
+
+🔸 Syntax
+
+        dnswalk [options] domain
+
+🔸 Common Options
+
+    1. -r → Recursive (checks all delegated subdomains).
+
+    2. -d → Debug mode (extra detail).
+
+    3. -a → All tests (performs all consistency checks).
+
+    4. -F → Treat warnings as fatal (strict mode).
+
+🔸 Example Usages
+
+1. Basic zone check
+
+   dnswalk example.com
+
+2. Recursive check of all subdomains
+
+   dnswalk -r example.com
+
+3. Perform all checks with debugging
+
+   dnswalk -ad example.com
