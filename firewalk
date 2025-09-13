@@ -23,8 +23,6 @@ Kali usually includes Firewalk in its tools repository. Install or confirm with:
     sudo apt update
     sudo apt install firewalk
 
-Or check the Kali Tools page if you want package details.
-
 🔹How — Basic usage & common options
 
 Run firewalk --help or check the man page on your system for exact flags. The general command form is:
@@ -45,4 +43,4 @@ Run firewalk --help or check the man page on your system for exact flags. The ge
 
     5. -n — numeric output / skip DNS lookups.
 
-    6. -v / -D — verbose / debugging output.
+    6. -v / -D — verbose / debugging outpush.
