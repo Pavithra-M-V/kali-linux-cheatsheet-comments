@@ -43,4 +43,4 @@ Run firewalk --help or check the man page on your system for exact flags. The ge
 
     5. -n — numeric output / skip DNS lookups.
 
-    6. -v / -D — verbose / debugging outpush.
+    6. -v / -D — verbose / debugging output
