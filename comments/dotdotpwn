@@ -1,0 +1,38 @@
+🔹 What is dotdotpwn?
+
+    dotdotpwn is a directory-traversal fuzzer written in Perl that automates discovery of path-traversal (a.k.a. “dot-dot” or ../) vulnerabilities against services like HTTP, FTP, TFTP and web applications. It uses payload rules and heuristics to try many traversal variants and looks for interesting files/outputs.
+
+🔹 Why use it?
+
+    -Pentesting / security audit: Quickly finds path-traversal vulnerabilities that allow reading files outside the web root (e.g., /etc/passwd, config files). Useful during web app assessments or testing embedded devices with weak URL handling.
+
+    -Fuzz automation: Instead of hand-crafting many payloads, dotdotpwn provides a large payload set and modes (protocol modules) to exercise targets fast.
+
+🔹How to install (in kali linux) ?
+
+    sudo apt update
+    sudo apt install dotdotpwn
+
+🔹Common modes & flags (version differences exist)
+
+Different releases may have slightly different flags; the examples below are the common/typical ones used in docs and tutorials.
+
+    1. -m <module> : module/mode (e.g., http, http-url, ftp, tftp, stdout, payload)
+
+    2. -h <host> or -u <url> : target host or full URL (depends on module)
+
+    3. -p / -x : port (common variants)
+
+    4. -f <file> : file to search for on the target (e.g., /etc/passwd)
+
+    5. -k <keyword> : keyword to look for in responses (e.g., root:)
+
+    6. -d <depth> : traversal depth (how many ../ levels to try)
+
+    7. -t <threads> : number of parallel threads/requests
+
+    8. -q : quiet / minimal output
+
+    9. -o <dir> : output/report directory (create it if missing)
+
+    10. -v / -D : verbose / debug (implementation may differ)
