@@ -1,0 +1,64 @@
+🔹What is fierce?
+
+    -fierce is a lightweight DNS reconnaissance/domain scanner designed to find non-contiguous IP space and hostnames for a target domain.
+
+    -It performs things like DNS zone transfer checks, dictionary (brute) subdomain checks, and reverse lookups to help map an organization’s externally visible hostnames and networks.
+
+    -It’s intended as a pre-cursor to deeper scanning (nmap, nikto, etc.), not an exploitation tool.
+
+🔹Why use it?
+
+    -Quick domain reconnaissance: finds hidden or forgotten hosts, shadow subdomains, and gaps in IP allocation that reveal likely targets.
+
+    -Pre-scan discovery: helps you build accurate target lists (IP ranges & hostnames) before running heavier scanners.
+
+    -Low overhead: fast, focused DNS techniques (not full port scans) that often reveal high-value info with little network noise.
+
+🔹How to install?
+
+Fierce commonly ships with Kali or is available via package managers; to install/update:
+
+    sudo apt update
+    sudo apt install fierce
+
+🔹Basic usage & common flags
+
+Run fierce -h or fierce --help on your installed version to see exact flags. Typical forms:
+
+1. Simple scan
+
+   fierce -dns example.com
+
+2.Set threads (parallelism)
+
+    fierce -dns example.com -threads 10
+
+3.Specify a wordlist for bruteforce
+
+    fierce -dns example.com -wordlist /usr/share/wordlists/subdomains.txt
+
+4.Reverse lookup / range probing (find hosts in IP blocks)
+
+    fierce -dns example.com -range 192.0.2.0/24
+
+🔹What it does (techniques)?
+
+    -Zone transfer attempts (AXFR): asks authoritative name servers for full zone data (rarely allowed, but high value if successful).
+
+    -DNS brute force / dictionary: tries common subdomain names to discover hosts not listed publicly.
+
+    -Reverse resolution / PTR sweeps: performs reverse lookups across candidate IP ranges to find hostnames.
+
+    -Glue / nameserver discovery: enumerates name servers and related delegations to expand the search space.
+
+🔹Interpreting output
+
+    -Zone transfer success: immediate full list of hosts — treat as critical info (and sensitive).
+
+    -Found hosts/subdomains: verify with dig, host, or nmap -sV to confirm and avoid false positives.
+
+    -IP blocks discovered: use these ranges as targets for subsequent scanning (nmap, web recon).
+
+    -No findings: doesn’t mean nothing exists — combine with other tools (Sublist3r, subfinder, crt.sh) for broader coverage.
+
+s
