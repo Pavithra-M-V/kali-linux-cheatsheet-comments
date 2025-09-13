@@ -1,0 +1,79 @@
+🔹 What is dnsrecon?
+
+      dnsrecon is a Python-based DNS reconnaissance and enumeration script used to gather DNS-related information about a domain: standard records (A, MX, NS, SOA, TXT, etc.), zone transfers, wildcard checks, DNSSEC info, subdomain brute-forcing, reverse lookups, and more. It’s included in Kali and widely used by pen-testers and red-teamers.
+
+Key capabilities:
+
+    -Standard DNS record enumeration (A, AAAA, MX, NS, SOA, TXT, SPF)
+
+    -Zone transfer (AXFR) checks against authoritative name servers
+
+    -Subdomain brute-force using a wordlist
+
+    -PTR (reverse) sweeps for an IP range or CIDR
+
+    -DNSSEC and wildcard detection
+
+    -Export results to machine-readable formats (XML/CSV/JSON)
+
+🔹Why use dnsrecon?
+
+    -All-in-one DNS tool: one script combines many useful DNS reconnaissance tasks.
+
+    -Fast reconnaissance: good for the information-gathering phase in pentests and red-team engagements.
+
+    -Exportable output: XML/CSV/JSON support makes it easy to save, report, or chain into other tools.
+
+    -Flexible: point it at custom resolvers, use specific nameservers, or supply your own dictionaries.
+
+🔹Common usage patterns
+
+    Use dnsrecon -h to view flags available on your local version. Below are practical examples and the most commonly used flags.
+
+Basic command syntax:
+
+    dnsrecon -d <domain> [options]
+
+🔹Common flags
+
+    -d <domain> — Target domain.
+
+    -t <type> — Type of enumeration. Common types:
+
+    std — Standard records (default).
+
+    brt — Brute force subdomains with a dictionary.
+
+    axfr or using -a — Zone transfer checks.
+
+    rev — Reverse PTR sweep on an IP range/CIDR.
+
+    -D <dictionary> — Wordlist for brute forcing subdomains.
+
+    -n <nameserver> — Use a specific DNS server for queries.
+
+    -r <range> — Reverse lookup on an IP range or CIDR.
+
+    --xml <file> — Save output as XML. (Other versions may support JSON/CSV.)
+
+Examples
+
+1.Standard enumeration
+
+        dnsrecon -d example.com
+
+2.Subdomain brute-force using a wordlist
+
+        dnsrecon -d example.com -D /usr/share/wordlists/seclists/Discovery/DNS/subdomains-top1million-5000.txt -t brt
+
+3.Try zone transfers (AXFR) and standard checks
+
+        dnsrecon -d example.com -a
+
+4.Reverse PTR sweep on a CIDR
+
+        dnsrecon -r 198.51.100.0/24
+
+Save results to XML
+
+        dnsrecon -d example.com -D wordlist.txt -t brt --xml results.xml
