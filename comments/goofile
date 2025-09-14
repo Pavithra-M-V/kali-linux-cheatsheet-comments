@@ -1,0 +1,45 @@
+🔹 What is goofile
+
+    goofile is a small open-source command-line tool that automates Google dorking for file types: it queries Google for a given domain and file extension and returns paths to matching files (e.g. pdf, doc, xls). It’s included in Kali’s toolset and there are maintained Python and Go variants on GitHub.
+
+🔹 Why use goofile (when it’s useful)
+
+    -Quickly discover publicly indexed documents on a target domain (reports, spreadsheets, config files, backups) during reconnaissance.
+
+    -Automates repetitive Google dork queries so you don’t manually craft site:example.com filetype:pdf searches.
+
+    -Outputs easy-to-parse lists you can feed to downloaders (wget/curl) or follow-up analysis tools (metadata extractors, OSINT pipelines).
+
+    -Lightweight and available in Kali’s repos → easy to install in pentest/OSINT workflows.
+
+🔹How to use goofile in Kali — quick step-by-step
+
+1. Install
+
+Open a terminal:
+
+    sudo apt update
+    sudo apt install goofile
+
+This installs the Kali-packaged version. (Kali package info / versions available).
+
+3. Basic usage examples
+
+Search for PDFs on example.com and print results:
+
+    goofile -d example.com -f pdf
+
+Search for Word docs:
+
+    goofile -d target.com -f docx
+
+(Exact flags can vary slightly by fork/version; the common interface is -d for domain and -f for file type.)
+
+4. Save results to a file and download matches
+   goofile -d target.com -f pdf > found_pdfs.txt
+
+# then download (example)
+
+cat found_pdfs.txt | xargs -n1 -P4 wget -q
+
+This lets you batch-download discovered files for analysis.
