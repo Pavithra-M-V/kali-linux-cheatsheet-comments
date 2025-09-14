@@ -1,0 +1,79 @@
+🔹What is fragrouter?
+
+    fragrouter (often discussed together with the fragroute/fragrouter family) is a packet-manipulation/interception tool used to modify, fragment, delay, reorder, or otherwise mutate packets as they pass through a machine.
+
+Common capabilities include:
+
+    -Splitting IP packets into unusual fragments (varying fragment sizes / offsets).
+
+    -Rewriting or dropping TCP/UDP payloads.
+
+    -Delaying or reordering packets.
+
+    -Acting as a transparent proxy/router that applies a set of rules to traffic in transit.
+
+    -It’s primarily used to test how firewalls, IDS/IPS, and hosts handle unusual or malformed traffic and to demonstrate reassembly/fragmentation issues.
+
+🔹Why use fragrouter?
+
+    -Security testing / IDS evasion research — shows whether network devices reassemble or inspect fragments correctly; can reveal gaps where malicious payloads pass because the device fails to reassemble/inspect correctly.
+
+    -Firewall/ACL validation — helps validate that middleboxes enforce policies correctly even under fragmented/malformed traffic.
+
+    -Protocol resilience testing — finds bugs in TCP/IP stacks or applications that mishandle fragments or out-of-order data.
+
+    -Educational / lab work — useful for learning about IP fragmentation, packet reassembly, and network defensive gaps.
+
+🔹How it works (high level)?
+
+    -fragrouter sits on the packet path (either as a gateway, transparent bridge, or proxy).
+
+    -It intercepts packets and applies a rule set (fragmentation rules, drop rules, rewrite rules, timing rules).
+
+    -For fragmentation, it splits a single IP packet into multiple fragments with chosen lengths and offsets. The target host later reassembles the fragments — the behavior during reassembly (and what intermediate devices see) is what the tester observes.
+
+    -For mutation, it can change bytes in payloads, tamper TCP flags, change sequencing, or insert delays to provoke edge cases.
+
+🔹How to Install ?(Kali)
+
+    sudo apt update
+    sudo apt install fragroute🔹What is fragrouter?
+
+    fragrouter (often discussed together with the fragroute/fragrouter family) is a packet-manipulation/interception tool used to modify, fragment, delay, reorder, or otherwise mutate packets as they pass through a machine.
+
+Common capabilities include:
+
+    -Splitting IP packets into unusual fragments (varying fragment sizes / offsets).
+
+    -Rewriting or dropping TCP/UDP payloads.
+
+    -Delaying or reordering packets.
+
+    -Acting as a transparent proxy/router that applies a set of rules to traffic in transit.
+
+    -It’s primarily used to test how firewalls, IDS/IPS, and hosts handle unusual or malformed traffic and to demonstrate reassembly/fragmentation issues.
+
+🔹Why use fragrouter?
+
+    -Security testing / IDS evasion research — shows whether network devices reassemble or inspect fragments correctly; can reveal gaps where malicious payloads pass because the device fails to reassemble/inspect correctly.
+
+    -Firewall/ACL validation — helps validate that middleboxes enforce policies correctly even under fragmented/malformed traffic.
+
+    -Protocol resilience testing — finds bugs in TCP/IP stacks or applications that mishandle fragments or out-of-order data.
+
+    -Educational / lab work — useful for learning about IP fragmentation, packet reassembly, and network defensive gaps.
+
+🔹How it works (high level)?
+
+    -fragrouter sits on the packet path (either as a gateway, transparent bridge, or proxy).
+
+    -It intercepts packets and applies a rule set (fragmentation rules, drop rules, rewrite rules, timing rules).
+
+    -For fragmentation, it splits a single IP packet into multiple fragments with chosen lengths and offsets. The target host later reassembles the fragments — the behavior during reassembly (and what intermediate devices see) is what the tester observes.
+
+    -For mutation, it can change bytes in payloads, tamper TCP flags, change sequencing, or insert delays to provoke edge cases.
+
+🔹How to Install ?(Kali)
+
+    sudo apt update
+    sudo apt install fragroute
