@@ -1,0 +1,44 @@
+🔹 What is Firewalk?
+
+    -Firewalk is an active network reconnaissance tool that determines which Layer-4 (TCP/UDP) protocols a router or firewall will forward.
+
+    -It does this by sending packets with a TTL set to expire one hop beyond the gateway; if the packet is forwarded and then expires at the next hop you get an ICMP_TIME_EXCEEDED reply — if the gateway drops the packet because of ACLs/firewall rules you get no reply.
+
+    -This allows you to infer which ports/protocols the gateway is permitting.
+
+🔹 Why use Firewalk?
+
+    -Map firewall/ACL behavior — find which protocols and ports are allowed through a gateway without doing a full port scan behind it.
+
+
+    -Validate network policies — check if firewall rules match intended security policy (useful in audits and pentests).
+
+
+    -Low-noise reconnaissance — compared to some scans it focuses on ACL/protocol pass/block behavior and can be less intrusive if used carefully.
+
+🔹 How to install?
+
+Kali usually includes Firewalk in its tools repository. Install or confirm with:
+
+    sudo apt update
+    sudo apt install firewalk
+
+🔹How — Basic usage & common options
+
+Run firewalk --help or check the man page on your system for exact flags. The general command form is:
+
+    firewalk [options] <gateway> <target>
+
+🔹 Common useful options (flag names may vary slightly by version):
+
+    1. -p <protocol> — protocol to test (TCP, UDP, or ICMP).
+
+    2. -S <start-end> — destination port or port range to probe (for TCP/UDP).
+
+    3. -i <iface> — network interface to use.
+
+    4. -d <startport> — ramping / source port start (some examples use this to avoid rate limiting).
+
+    5. -n — numeric output / skip DNS lookups.
+
+    6. -v / -D — verbose / debugging output
