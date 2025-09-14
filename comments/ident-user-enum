@@ -1,0 +1,44 @@
+🔹 What is ident-user-enum
+
+    -ident-user-enum is a small Perl script (packaged in Kali) that queries the Ident/RFC-1413 service (TCP port 113) on a target and attempts to determine the username that “owns” a given TCP connection/port on that host.
+
+    -In short: it asks the target’s ident daemon “which local user started the process that’s listening on port X?” and prints whatever reply it gets.
+
+🔹Why use it ?
+
+    -Quick user discovery: it can reveal usernames that are valid on the target system. Those usernames are useful later for password-guessing/brute-force attempts or targeted social engineering (in authorized tests).
+
+
+    -Prioritisation: if you learn which service runs as root vs a low-privilege account, you can prioritise which services to investigate during a pentest.
+
+
+    -Fast reconnaissance: it’s lightweight and often used early in network enumeration when ident is enabled.
+
+🔹How to install on Kali?
+
+sudo apt update
+sudo apt install -y ident-user-enum
+
+🔹Basic usage & examples
+
+The common invocation is:
+
+    ident-user-enum <target-ip> <port1> <port2> <port3> ...
+
+Examples:
+
+Query a few ports on a lab host:
+
+    ident-user-enum 10.10.10.10 22 21 80 443
+
+Output (example):
+
+    10.10.10.10:22    root
+    10.10.10.10:80    www-data
+    10.10.10.10:443   nobody
+
+This means the ident daemon replied with usernames associated with the processes listening on those ports.
+
+Scan many ports (shell-friendly):
+
+    ident-user-enum 10.10.10.10 20 21 22 23 25 80 110 139 143 443 445 > ident_results.tx
