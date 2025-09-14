@@ -1,0 +1,52 @@
+🔹 What is hping3?
+
+    hping3 is a command-line packet crafter/analyzer that can send custom TCP/UDP/ICMP/RAW-IP packets and display replies — like ping but far more flexible.
+
+     It’s commonly used for network troubleshooting, firewall auditing, path MTU discovery, traceroute-style tests, TCP/IP stack fingerprinting and scripted packet experiments.
+
+🔹 Why use hping3?
+
+    -Test firewall rules and filtering behavior by sending specific packet types (SYN, ACK, FIN, fragments, etc.) and observing replies.
+
+    -Perform fine-grained port scanning (SYN/FIN/ACK scans) when you need more control than higher-level tools provide.
+
+    -Measure network characteristics (response times, path MTU) and do traceroute with arbitrary protocol/flags.
+
+    -Craft spoofed packets for research (IP spoofing, sequence manipulation) and to validate detection/mitigation logic in IDS/IPS and firewalls.
+
+🔹 How to install hping3 on Kali ?
+
+Open a terminal and run:
+
+    sudo apt update
+    sudo apt install -y hping3
+
+🔹 Basic usage & common flags (with meaning)
+
+        1. -1 : ICMP mode (like ping).
+
+        2. -2 : UDP mode.
+
+        3. -8 : RAW IP mode.
+
+        4. -S : set SYN flag. -A ACK, -F FIN, -P PSH, -R RST, -U URG.
+
+        5. -p <port> : destination port.
+
+        6. -s <sport> : source port.
+
+        7. -c <count> : number of packets to send.
+
+        8. -i <type> : packet interval (u1000 = microseconds, u prefix; a = random).
+
+        9. --flood : send packets as fast as possible (dangerous).
+
+        10. -a <addr> : spoof source IP (requires root and may be filtered).
+
+        11. -f : fragment packets.
+
+        12. --traceroute : perform traceroute-style test (use with -S/-1/-2 etc.).
+
+        13. --rand-source : randomize source addresses.
+
+        14. -d <size> : set data size.
