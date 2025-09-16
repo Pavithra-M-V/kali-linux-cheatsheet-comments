@@ -1,0 +1,56 @@
+What is Metagoofil?
+
+    -Metagoofil is an OSINT tool that harvests publicly-available office documents from a target domain (PDF, DOC, XLS, PPT, etc.), downloads them, and extracts metadata (authors, usernames, software versions, OS, paths, e-mail addresses, and other artifacts) using tools like exiftool.
+
+    -It’s useful for passive information gathering: what employees produce, software versions exposed in docs, or internal usernames that leak in metadata.
+
+Why use Metagoofil?
+
+    -To discover sensitive info leaked in document metadata (usernames, emails, company paths).
+
+    -To build targeted wordlists (usernames/paths) for later testing (password sprays, phishing) during authorized engagements.
+
+    -To augment reconnaissance with artifacts you wouldn’t find via simple HTTP sweeps.
+
+    -Important for defenders to audit what sensitive metadata is publicly exposed.
+
+How to install (Kali)
+
+Metagoofil is shipped in Kali repositories. Install with:
+
+    sudo apt update
+    sudo apt install metagoofil
+
+Basic usage (syntax)
+
+    metagoofil -d <domain> -t <types> -l <limit> -n <threads> -o <output_dir>
+
+Common options explained:
+
+    1. -d <domain> → target domain (required).
+
+    2. -t <types> → comma-separated file extensions to search (e.g. pdf,doc,docx,xls,ppt).
+
+    3. -l <limit> → max number of files to download (e.g. 200).
+
+    4. -n <threads> → parallel download threads (speed).
+
+    5. -o <output_dir> → directory for downloaded files & metadata output.
+
+    6. -h or --help → show full help and flags (always check this on your installed version).
+
+Practical examples
+
+1. Quick scan for PDFs and DOCX (download up to 100 files):
+
+   metagoofil -d example.com -t pdf,docx -l 100 -n 10 -o /tmp/metagoofil_example
+
+2. Broader run (more file types):
+
+   metagoofil -d example.com -t pdf,doc,docx,xls,xlsx,ppt,pptx -l 300 -n 20 -o ./metagoofil_results
+
+After a run you’ll find:
+
+    Downloaded documents in ./metagoofil_results/
+
+    Extracted metadata files (usually plain text / HTML) summarizing authors, software, usernames, email addresses, and full exiftool outputs.
