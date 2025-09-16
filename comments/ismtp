@@ -1,0 +1,62 @@
+🔹 What is ismtp in Kali Linux?
+
+    -ismtp stands for Interactive SMTP.
+
+    -It is a command-line SMTP testing tool available in Kali Linux.
+
+    -It allows you to connect to an SMTP (mail) server manually and simulate sending an email.
+
+    -Think of it like telnet for SMTP, but with more built-in features (e.g., interactive prompts).
+
+🔹 Why use ismtp?
+
+    -To test SMTP servers during penetration testing or system administration.
+
+    -To check if an SMTP server is open relay (misconfigured and can be abused to send spam).
+
+    -To verify authentication and communication with mail servers.
+
+    -To troubleshoot email delivery issues by manually sending test mails.
+
+    -Useful in security audits to detect weak mail server configurations.
+
+🔹 How to use ismtp?
+
+1. Install (if not already available in your Kali)
+
+   sudo apt update
+   sudo apt install ismtp
+
+2. Basic usage (syntax)
+
+   ismtp [options] <server>
+
+3. Examples
+
+Connect to an SMTP server on default port (25):
+
+    ismtp mail.example.com
+
+Specify a port (e.g., 587 for submission):
+
+    ismtp -p 587 mail.example.com
+
+Send a test mail with FROM and TO:
+
+    ismtp -f sender@example.com -t receiver@example.com mail.example.com
+
+Enable verbose output (debug mode):
+
+    ismtp -v -f sender@example.com -t receiver@example.com mail.example.com
+
+🔹 Key Options
+
+    1. -f <address> → From address.
+
+    2. -t <address> → To address.
+
+    3. -p <port> → Port number (default: 25).
+
+    4. -v → Verbose/debug mode.
+
+    5. -d → Dump communication between client and server.
