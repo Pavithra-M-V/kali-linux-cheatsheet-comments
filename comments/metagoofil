@@ -1,10 +1,10 @@
-What is Metagoofil?
+🔹What is Metagoofil?
 
     -Metagoofil is an OSINT tool that harvests publicly-available office documents from a target domain (PDF, DOC, XLS, PPT, etc.), downloads them, and extracts metadata (authors, usernames, software versions, OS, paths, e-mail addresses, and other artifacts) using tools like exiftool.
 
     -It’s useful for passive information gathering: what employees produce, software versions exposed in docs, or internal usernames that leak in metadata.
 
-Why use Metagoofil?
+🔹Why use Metagoofil?
 
     -To discover sensitive info leaked in document metadata (usernames, emails, company paths).
 
@@ -14,18 +14,18 @@ Why use Metagoofil?
 
     -Important for defenders to audit what sensitive metadata is publicly exposed.
 
-How to install (Kali)
+🔹How to install (Kali)
 
 Metagoofil is shipped in Kali repositories. Install with:
 
     sudo apt update
     sudo apt install metagoofil
 
-Basic usage (syntax)
+🔹Basic usage (syntax)
 
     metagoofil -d <domain> -t <types> -l <limit> -n <threads> -o <output_dir>
 
-Common options explained:
+🔹Common options explained:
 
     1. -d <domain> → target domain (required).
 
@@ -39,7 +39,7 @@ Common options explained:
 
     6. -h or --help → show full help and flags (always check this on your installed version).
 
-Practical examples
+🔹Practical examples
 
 1. Quick scan for PDFs and DOCX (download up to 100 files):
 
