@@ -1,0 +1,84 @@
+🔹 What is Masscan?
+
+        -Masscan is a high-speed Internet port scanner (written by Robert Graham).
+
+        -It uses raw packets to scan millions of IPs/ports per second on capable hardware.
+
+        -It’s like nmap for scale and speed — designed to discover open ports across large address spaces.
+
+🔹 Why use Masscan?
+
+        -Very fast network-wide discovery (internet-scale or large enterprise subnets).
+
+        -Good for initial footprinting to find which hosts/services are present before deeper scanning.
+
+        -Useful when you need to scan many IPs/ports quickly and then pass findings to slower, more detailed tools (e.g., nmap, httpx, nikto) for follow-up.
+
+        -Supports sharding/distributed scans so you can split work across machines.
+
+🔹 Important safety & legal note
+
+        -Masscan sends raw packets and can look like an attack. Only scan systems/networks you own or have explicit permission to test.
+
+        -Scanning the public Internet without authorization can get you blocked, reported, or face legal consequences.
+
+🔹 Install on Kali
+
+        sudo apt update
+        sudo apt install masscan
+
+🔹 Basic usage & common options
+
+        masscan [targets] -p[ports] [options]
+
+Key options you’ll use:
+
+        1. -p : port or ports (e.g., -p80, -p1-65535, -p80,443,3306).
+
+        2. --rate <pps> : packets per second (control speed). Essential to avoid saturating your network.
+
+        3. -oJ <file> : output JSON.
+
+        4. -oG <file> : grepable output.
+
+        5. -oX <file> : XML output.
+
+        6. --banners : attempt to grab banners (slower / more intrusive).
+
+        7. --shard <n/m> : split the job into m shards and run shard n (useful for distributed scanning).
+
+        8. --adapter <name> or --interface <if> : choose network interface.
+
+        9. --source-port <port> : set source port (sometimes used to bypass trivial filters).
+
+        10. --pcap <file> : write raw packets to pcap.
+
+You can see help with:
+
+        sudo masscan --help
+
+🔹 Useful example commands
+
+1.  Quick scan of a /24 for common web ports at moderate speed:
+
+        sudo masscan 192.168.1.0/24 -p80,443 --rate 1000 -oG masscan_grep.txt
+
+2.  Scan all TCP ports on a small subnet (slower):
+
+        sudo masscan 10.0.0.0/24 -p1-65535 --rate 500 -oJ masscan_results.json
+
+3.  Large, faster scan (be careful!):
+
+        sudo masscan 198.51.100.0/24 -p80,443,22 --rate 20000 -oJ big_scan.json
+
+4.  Sharded scan (split into 10 parts — run each shard on a separate machine):
+
+        sudo masscan 203.0.113.0/24 -p80 --rate 5000 --shard 1/10 -oJ shard1.json
+
+5.  Save packets for later analysis (pcap):
+
+        sudo masscan 192.0.2.0/24 -p22 --rate 1000 --pcap output.pcap
+
+6.  Attempt banners (slower / more intrusive):
+
+        sudo masscan 192.168.1.0/24 -p21,22,80,443 --banners --rate 500 -oJ banners.json
