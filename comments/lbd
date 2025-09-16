@@ -1,0 +1,56 @@
+🔹 What is lbd?
+
+    -lbd stands for “Load Balancer Detector.”
+
+    -It is a simple bash script tool included in Kali Linux.
+
+    -lbd detects whether a given domain or IP is using a load balancer.
+
+    -It works by sending multiple requests to the target and analyzing differences in responses.
+
+    -The detection is based on DNS, HTTP, and TCP/ICMP behavior.
+
+🔹 Why use lbd?
+
+    -To identify if a target website is behind a load balancer.
+
+    -Important in penetration testing because:
+
+    -A load balancer means requests may be distributed to multiple backend servers.
+
+    -Exploits and attacks might behave differently depending on which backend you hit.
+
+    -Helps in fingerprinting infrastructure during reconnaissance.
+
+    -Useful for network admins to validate whether their load balancer setup is exposed.
+
+🔹 How to use lbd?
+
+1. Install (if not pre-installed in your Kali)
+
+   sudo apt update
+   sudo apt install lbd
+
+2. Syntax
+   lbd <target>
+
+3. Example
+
+Check if example.com is behind a load balancer:
+
+    lbd example.com
+
+Output will say something like:
+
+    Testing for DNS...
+    Not a DNS load balancer
+    Testing for HTTP...
+    HTTP load balancer found
+
+🔹 How it works (internally)
+
+    -DNS test: Checks if multiple IPs are returned for the same hostname.
+
+    -HTTP test: Sends multiple HTTP requests and compares responses (headers, cookies, content).
+
+    -TCP/ICMP test: Compares TTL values and other packet-level differences.
