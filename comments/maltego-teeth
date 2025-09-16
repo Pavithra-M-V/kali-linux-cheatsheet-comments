@@ -1,0 +1,44 @@
+🔹What is maltego-teeth?
+
+        maltego-teeth (often called Maltego Teeth) is a package of Maltego transforms that allow you to run active tools (nmap, sqlmap, Metasploit, etc.) from inside the Maltego graphing/OSINT GUI.
+
+🔹Why use it?
+
+        -Streamlines reconnaissance → active testing: run scans (e.g., nmap) or sqlmap against entities discovered in Maltego without leaving the graph.
+
+        -Faster correlation: results feed back into the graph as new entities/links, helping analysts visually connect findings.
+
+        -Good for red-team / pen testers who want a visual, reproducible workflow combining OSINT and targeted scans. (Always use only on assets you’re authorized to test.)
+
+🔹How to install (Kali)?
+
+Update and install package:
+
+        sudo apt update
+        sudo apt install maltego-teeth
+
+🔹How to get it working in Maltego (quick steps)
+
+        -Open Maltego (you need Maltego installed and licensed/registered as required).
+
+        -Load the Teeth config: import the provided Maltego transforms/config file. The Kali packaging notes a config at /opt/Teeth/etc/Maltego_config.mtz — load that into Maltego (File → Import → Transform/Config).
+
+
+        -Run transforms from the graph: right-click an entity (IP, domain, person) and you’ll see new Teeth transforms (e.g., Run nmap, Run sqlmap). Execute them — the transform may spawn a local scan and return results as Maltego
+
+        Review & enrich: results appear on the graph; click to inspect details or run follow-on transforms.
+
+🔹Example (typical workflow)
+
+        -Domain → (Teeth DNS/OSINT transforms) → Host/IP entity → right-click → Teeth:nmap scan → new "Open port" entities
+
+        -Or Database server entity → Teeth:sqlmap → returned vuln/evidence entities
+        This lets you visually connect which hosts/services correspond to which OSINT items.
+
+🔹Tips, limitations & safety
+
+        -Permissions: only scan targets you own or are authorized to test. Active scans can be intrusive and illegal without permission.
+
+        -Performance & noise: running many transforms (nmap, sqlmap) from a GUI can be noisy; tune timeouts and scan intensity.
+
+        -Keep Maltego & Teeth up to date: package in Kali has versions tracked in the Kali GitLab repo and pkg pages — check those for updates/bugs.
