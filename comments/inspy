@@ -1,0 +1,47 @@
+🔹 What is InSpy?
+
+    -InSpy is an open-source LinkedIn enumeration tool included in Kali Linux.
+
+    -It is written in Python and is used to gather employee information from LinkedIn.
+
+    -InSpy is often used during the reconnaissance phase of penetration testing and social engineering.
+
+InSpy mainly works with two modules:
+
+    -TechSpy → Finds people in a company related to specific technologies.
+
+    -EmpSpy → Enumerates employees of a company based on LinkedIn profiles.
+
+🔹 Why use InSpy?
+
+    -To enumerate employee names for a target organization (useful for creating usernames for password attacks, phishing campaigns, or social engineering).
+
+    -To identify technologies an organization uses (by searching for employees with job titles like “Java Developer,” “AWS Engineer,” etc.).
+
+    -Helps penetration testers and red teamers in footprinting and initial access planning.
+
+    -Provides attackers and defenders insight into what information employees may be unintentionally exposing on LinkedIn.
+
+🔹 How to use InSpy?
+
+InSpy comes pre-installed on Kali Linux. If not, install with:
+
+        sudo apt install inspy
+
+1. View Help Menu
+   -h
+
+2. Enumerate Employees by Company
+
+   inspy --empspy "Google"
+   Lists employees of Google (from LinkedIn).
+
+3. Enumerate Employees Related to Technology
+
+   inspy --techspy "Google" python
+
+Finds Google employees with skills or titles related to Python.
+
+4. Export Results to a File
+
+   inspy --empspy "Google" --outfile employees.txt
