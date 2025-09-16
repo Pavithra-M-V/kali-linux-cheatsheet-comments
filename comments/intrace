@@ -1,0 +1,58 @@
+🔹 What is InTrace?
+
+    -InTrace is a traceroute-like application that enumerates IP hops by piggybacking on existing TCP connections (rather than using ICMP/UDP probes).
+
+     -It can inspect hops for connections initiated from the local host or from remote hosts and supports IPv6.
+
+🔹 Why use InTrace?
+
+    -Network reconnaissance — map intermediate hops along an existing TCP session (useful when ICMP is filtered).
+
+
+    -Firewall / filtering analysis — because it uses TCP flows, it can sometimes reveal network paths where traditional traceroute is blocked.
+
+
+    -Useful for pentesters and network defenders wanting more nuance about how TCP traffic traverses a target network (note: only use on systems/networks you are authorized to test).
+
+🔹 How to install InTrace ?
+
+InTrace is packaged in Kali and can be installed with apt:
+
+    sudo apt update
+    sudo apt install intrace
+
+🔹 Basic usage / flags
+
+Run intrace without args or check -h/--help to see usage.
+
+    intrace <-h hostname> [-p <port>] [-d <debuglevel>] [-s <payloadsize>] [-6]
+
+🔹 Common flags:
+
+    1. -h <hostname> : target host to trace (required).
+
+    2. -p <port> : TCP port to piggyback on (e.g., 80, 443).
+
+    3. -d <level> : debug/log verbosity.
+
+    4. -s <payloadsize> : size of the probe payload.
+
+    5. -6 : use IPv6.
+
+🔹 Example commands (practical)
+
+1. Show help:
+
+   intrace -h
+
+2. Trace hops toward example.com using TCP port 443:
+
+   sudo intrace -h example.com -p 443
+
+3. Increase verbosity for debugging:
+
+   sudo intrace -h example.com -p 443 -d 2
+
+4. IPv6 example:
+
+   sudo intrace -h ipv6.example.com -p 443 -6
