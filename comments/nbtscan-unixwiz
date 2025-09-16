@@ -1,0 +1,42 @@
+🔹 What is nbtscan-unixwiz?
+
+    -nbtscan-unixwiz is a small command-line NetBIOS nameserver scanner that queries a range of IPs and reports NetBIOS name information (computer name, workgroup/domain, logged-in user, MAC address, services).
+
+    -It’s essentially an NBTSTAT-style scanner for UNIX/Linux.
+
+🔹 Why use it?
+
+    -Network discovery: quickly find Windows hosts and file-share candidates on a LAN.
+
+    -Reconnaissance in pentests: extract names, usernames and MACs that can be used for follow-up testing (SMB enumeration, targeted phishing, credential checks).
+
+    -Forensics / inventory: useful to enumerate NetBIOS info on a local subnet during investigations or inventory checks.
+
+🔹 How to install (Kali)
+
+nbtscan-unixwiz is packaged in Kali. Install with:
+
+    sudo apt update
+    sudo apt install nbtscan-unixwiz
+
+🔹Basic usage & examples
+
+    nbtscan [options] <targets>
+
+Examples:
+
+Scan a /24 for NetBIOS info:
+
+    sudo nbtscan 192.168.1.0/24
+
+Scan a single host:
+
+    sudo nbtscan 192.168.1.45
+
+Scan multiple ranges:
+
+    sudo nbtscan 10.0.0.0/24 172.16.5.0/24
+
+Typical output lines look like:
+
+    192.168.1.5   WORKGROUP\HOSTNAME   <00>  UNIQUE  File Server Service  00:11:22:33:44:55
