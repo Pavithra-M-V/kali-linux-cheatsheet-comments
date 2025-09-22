@@ -1,0 +1,63 @@
+🔹 What is Nikto?
+
+    -Nikto is an open-source web server scanner.
+
+    -It scans web servers for:
+
+        Outdated software versions
+
+        Dangerous files or scripts
+
+        Insecure server configurations
+
+    -Common vulnerabilities (e.g., default credentials, insecure headers, etc.)
+
+    -It supports over 6700 checks for known issues.
+
+🔹 Why use Nikto?
+
+    -To identify misconfigurations in web servers.
+
+    -To find potential entry points for attackers.
+
+    -To detect outdated software that may have known vulnerabilities.
+
+    -To perform quick reconnaissance in penetration testing.
+
+🔹 How to use Nikto in Kali Linux (basic commands)
+
+Check if Nikto is installed:
+
+    nikto -h
+
+(If not installed: sudo apt install nikto -y)
+
+Scan a target website:
+
+    nikto -h http://example.com
+
+Scan using SSL (HTTPS):
+
+    nikto -h https://example.com
+
+Scan a specific port:
+
+    nikto -h http://example.com -p 8080
+
+Save results to a file:
+
+    nikto -h http://example.com -o result.txt
+
+Save in specific format (HTML, CSV, XML):
+
+    nikto -h http://example.com -o result.html -Format html
+
+🔹 Example output
+
+When scanning, Nikto may report things like:
+
+“Server leaks inodes via ETags, header found…”
+
+“/phpinfo.php found, should be removed.”
+
+“Outdated Apache version detected (2.4.41).”
