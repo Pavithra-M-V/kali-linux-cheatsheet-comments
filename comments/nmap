@@ -1,0 +1,104 @@
+What is Nmap?
+
+    Nmap is an open-source network discovery and security-auditing tool.
+    At a high level it can:
+
+        Discover hosts on a network (who’s up).
+
+        Find open ports on hosts.
+
+        Detect services and versions running on those ports.
+
+        Attempt OS fingerprinting (guess operating system).
+
+        Run scripts (NSE) to perform discovery, vulnerability checks, brute force attempts, and more.
+
+Key components:
+
+    -Core port-scanning engine (SYN, connect, UDP, etc.).
+
+    -OS & service fingerprinting database.
+
+    -Nmap Scripting Engine (NSE) — hundreds of scripts for extra enumeration and vuln checks.
+
+    -Multiple output formats (normal, XML, grepable).
+
+Why use Nmap?
+
+Use cases and benefits:
+
+    -Network discovery — map your network topology or find rogue devices.
+
+    -Security scanning — find exposed services and potential attack surface.
+
+    -Inventory & asset management — what services/versions are running where.
+
+    -Vulnerability reconnaissance — with NSE scripts you can identify known issues.
+
+    -Penetration testing — first step in many assessments.
+
+    -Troubleshooting — check if a service/port is reachable.
+
+Limitations:
+
+    -Not an exploit tool — Nmap finds issues; it rarely exploits them (some NSE scripts can be intrusive).
+
+    -Noisy — many scans are obvious to IDS/IPS.
+
+    -False positives/negatives — treat results as clues, verify manually.
+
+How to use Nmap ?
+
+1. Check/install
+
+   Kali usually has it preinstalled. Check:
+
+   nmap --version
+
+If missing:
+
+    sudo apt update
+    sudo apt install nmap -y
+
+2. Basic host discovery
+
+   Ping-scan (which hosts are up) on a /24:
+
+   nmap -sn 192.168.1.0/24
+
+3. Basic port scans
+
+   SYN (stealth) scan — common and fast (requires root):
+
+   sudo nmap -sS 192.168.1.10
+
+TCP connect (no raw sockets needed):
+
+    nmap -sT 192.168.1.10
+
+UDP scan (slower and noisier):
+
+    sudo nmap -sU 192.168.1.10
+
+Scan specific ports or range:
+
+    nmap -p 22,80,443 192.168.1.10
+    nmap -p 1-65535 192.168.1.10   # full TCP port range (long)
+
+4. Service & version detection
+
+   Detect service and version strings:
+
+   sudo nmap -sV 192.168.1.10
+
+5. OS detection
+
+   Try to determine OS:
+
+   sudo nmap -O 192.168.1.10
+
+6. Aggressive scan (combines several checks)
+
+   Noisy but thorough:
+
+   sudo nmap -A 192.168.1.10
