@@ -1,0 +1,114 @@
+🔹 What is OSRFramework?
+
+    -OSRFramework (Open Source Research Framework) is a set of Python-based tools designed for OSINT (Open Source Intelligence).
+
+    -It helps you gather information from publicly available sources on the internet.
+
+    -It can check usernames, domains, phone numbers, emails, and more across hundreds of platforms.
+
+    -It comes pre-installed (or available in repositories) on Kali Linux under OSINT tools.
+
+🔹 Why use OSRFramework?
+
+    -Username reconnaissance → See where a username is registered across sites.
+
+    -Email footprinting → Find services/accounts linked to an email address.
+
+    -Domain investigation → Discover related info about a domain.
+
+    -Phone number checks → Verify footprints of phone numbers in public sources.
+
+    -OSINT automation → Instead of checking each site manually, OSRFramework automates it.
+
+Useful in:
+
+    -Penetration testing (social engineering, phishing prep, account discovery).
+
+    -Digital forensics (gathering intel about a target).
+
+    -Investigations (law enforcement, journalists, cybersecurity researchers).
+
+🔹 How to use OSRFramework in Kali Linux
+
+1. Installation / Check
+
+In Kali it’s usually preinstalled. Check:
+
+    osrframework -h
+
+If not found, install via pip:
+
+    sudo apt install osrframework -y
+
+2. Available tools in OSRFramework
+
+It provides several commands:
+
+    -usufy.py → Search for a username across multiple websites.
+
+    -mailfy.py → Search for information related to email addresses.
+
+    -searchfy.py → Search in various platforms (usernames, domains, etc.).
+
+    -domainfy.py → Check domain name availability across TLDs.
+
+    -phonefy.py → Look for information about phone numbers.
+
+3. Common usage examples
+
+🔹 Username search (usufy)
+
+    Check where username john_doe exists:
+
+        usufy.py -n john_doe
+
+
+    Search multiple usernames at once:
+
+        usufy.py -n alice,bob,charlie
+
+🔹 Email search (mailfy)
+
+    Check if an email is associated with public services:
+
+        mailfy.py -m test@example.com
+
+🔹Domain search (domainfy)
+
+    Check availability of a domain across TLDs:
+
+        domainfy.py -n mycompany -t com,net,org
+
+🔹 Phone number search (phonefy)
+
+    Look for a phone number footprint:
+
+        phonefy.py -p +919876543210
+
+🔹 General search (searchfy)
+
+    Run broader OSINT lookups:
+
+        searchfy.py -q john_doe
+
+4. Output formats
+
+You can export results for reporting:
+
+Text
+
+JSON
+
+CSV
+
+Example:
+
+    usufy.py -n john_doe -o results.json
+
+🔹 Limitations
+
+-Relies on publicly available info (if hidden by privacy laws/policies, won’t show).
+
+-Some modules can be slow since they query many sources.
+
+-Should only be used for legal and authorized investigations.
