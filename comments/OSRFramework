@@ -91,15 +91,13 @@ It provides several commands:
 
         searchfy.py -q john_doe
 
-4. Output formats
+4.  Output formats
 
-You can export results for reporting:
+        Text
 
-Text
+        JSON
 
-JSON
-
-CSV
+        CSV
 
 Example:
 
