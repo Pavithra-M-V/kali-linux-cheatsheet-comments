@@ -1,0 +1,56 @@
+🔹 What is Parsero?
+
+    -Parsero is a small Python tool that reads a website’s robots.txt, extracts the Disallow entries and automatically checks each path’s HTTP status (200, 403, 404, 302, …).
+
+    -It can also query Bing to see whether those disallowed paths are indexed. It’s essentially a robots.txt audit / reconnaissance helper.
+
+🔹 Why use Parsero?
+
+    -Quickly find potentially sensitive or forgotten paths that administrators listed in robots.txt.
+
+    -Determine which disallowed paths are actually reachable (HTTP 200) vs not available (404) so you can prioritise follow-up testing.
+
+    -Optionally check search engine indexing (Bing) to discover exposed content that shouldn’t be public.
+
+🔹 How to install?
+
+To install:
+
+    sudo apt update
+    sudo apt install parsero
+
+🔹 Quick usage & flags
+
+    Show help:
+
+    parsero -h
+
+    Important flags (from the README):
+
+    1. -u URL — analyze a single domain (e.g., parsero -u example.com)
+
+    2. -o — show only entries that return HTTP 200 (available)
+
+    3. -sb — search Bing for the disallow entries (find indexed results)
+
+    4. -f FILE — scan multiple domains listed in FILE (one per line)
+
+Example (run a domain + Bing check):
+
+    parsero -u www.example.com -sb
+
+Example (save only HTTP 200 results to a file):
+
+    parsero -u target.com -o > parsero_200s.txt
+
+Example of expected output
+
+When you run it you’ll see each disallowed URL and its HTTP status, for example:
+
+    http://example.com/embed.php 200 OK
+    http://example.com/share.php 404 Not Found
+    [+] 9 links have been analyzed and 3 of them are available!!!
+    Searching the Disallows entries in Bing
+
+    - example.com/raw.php/contact?i=KR9c2erd 200 OK
+    Finished in 7.29 seconds
