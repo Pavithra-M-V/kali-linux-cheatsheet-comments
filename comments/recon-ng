@@ -1,0 +1,100 @@
+🔎 What is Recon-ng?
+
+    -Recon-ng is a web reconnaissance framework written in Python.
+
+    -It provides a modular environment (like Metasploit but for reconnaissance) where you can collect information about a target using OSINT (Open Source Intelligence).
+
+    -It comes with modules for:
+
+        Domain name information
+
+        WHOIS lookups
+
+        DNS records
+
+        Subdomain enumeration
+
+        Geolocation data
+
+        Social media accounts
+
+        Data breach information
+
+🎯 Why use Recon-ng?
+
+    Automates and simplifies the information gathering phase of penetration testing.
+
+    Instead of running many different tools manually, Recon-ng integrates them in one framework.
+
+    Helps ethical hackers, security researchers, and penetration testers to:
+
+    Map the attack surface of a domain.
+
+    Collect data without alerting the target (passive reconnaissance).
+
+    Save results in workspaces for reporting and analysis.
+
+    Use APIs from services like Shodan, Virustotal, Bing, etc.
+
+⚙️ How to Use Recon-ng in Kali Linux?
+
+1. Start Recon-ng
+
+   recon-ng
+
+You’ll see a Metasploit-like CLI prompt.
+
+2. Create a Workspace
+
+Helps you organize your recon for each project:
+
+    workspaces create target_project
+
+3. Set a Target
+
+For example, to add a domain:
+
+    modules load recon/domains-hosts/bing_domain_web
+    options set SOURCE example.com
+    run
+
+4. Explore Available Modules
+
+List all modules:
+
+show modules
+
+Categories include:
+
+    recon/domains-\* → domain enumeration
+
+    recon/hosts-\* → host information
+
+    recon/contacts-\* → email and people lookup
+
+    reporting/\* → generate reports
+
+5. Use API Keys (Optional but Powerful)
+
+Some modules need API keys (like Shodan, Virustotal, etc.).
+Set them like this:
+
+    keys add shodan_api YOUR_API_KEY
+
+6. Generate Reports
+
+After running multiple modules:
+
+    modules load reporting/html
+    options set FILENAME /root/Desktop/report.html
+    run
+
+This creates a full recon report.
+
+✅ In short:
+
+What → Recon-ng is an OSINT reconnaissance framework.
+
+Why → To automate and organize information gathering during pentesting.
+
+How → Start tool → create workspace → load modules → set options → run → save reports.
