@@ -1,0 +1,81 @@
+🔹 What is SET in Kali Linux?
+
+    -SET (Social-Engineer Toolkit) is an open-source penetration testing framework designed for social engineering attacks.
+
+    -It comes pre-installed in Kali Linux and is mainly used to simulate attacks where the weakest link is human behavior instead of just technical vulnerabilities.
+
+    -Developed by Dave Kennedy (TrustedSec), SET is one of the most powerful tools for phishing, credential harvesting, and payload delivery.
+
+🔹 Why use SET?
+
+    -SET is used because:
+
+    -Realistic attack simulations: Helps penetration testers and organizations understand how attackers exploit human trust.
+
+    -Training & awareness: IT teams and employees can be trained to recognize and defend against social engineering attacks.
+
+    -Multiple attack vectors: It supports many types of attacks (phishing emails, fake websites, malicious payloads, etc.).
+
+    -Customizable & automated: Makes it easier to craft realistic attacks without needing to code everything manually.
+
+🔹 How to use SET in Kali Linux?
+
+1. Launch SET
+
+Open terminal and type:
+
+    sudo setoolkit
+
+(If not installed: sudo apt install set)
+
+You’ll see a menu-driven interface.
+
+2. Main Attack Vectors in SET
+
+Some of the most used options are:
+
+    - Social-Engineering Attacks
+
+    - Spear Phishing Attack Vectors (craft & send malicious emails).
+
+    - Website Attack Vectors (clones websites to capture credentials).
+
+    - Infectious Media Generator (creates malicious USB/CD payloads).
+
+    - Penetration Testing (Fast-Track)
+
+    - Quick payloads and exploits.
+
+    - Third Party Modules
+
+    - Extra attack plugins from the community.
+
+3. Example: Credential Harvesting Attack
+
+Steps:
+
+Start SET:
+
+    sudo setoolkit
+
+Choose:
+
+1. Social-Engineering Attacks
+2. Website Attack Vectors
+3. Credential Harvester Attack Method
+
+Select Site Cloner option.
+
+    -Enter the URL of the site you want to clone (e.g., Facebook, Gmail).
+
+    -SET will host a fake site on your local IP.
+
+    -When the victim visits the fake page and enters login info → credentials are captured in the terminal/log file.
+
+⚠️ Note
+
+    -SET is a legal penetration testing tool.
+
+    -Only use it on systems/networks you own or have permission to test.
+
+    Using it on unsuspecting people without consent is illegal and unethical.
