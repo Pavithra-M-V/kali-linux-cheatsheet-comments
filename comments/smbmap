@@ -1,0 +1,86 @@
+🔹 What is smbmap?
+
+    -smbmap is a fast, command-line tool for enumerating and interacting with SMB/CIFS shares on Windows/Linux hosts.
+
+    -It shows available shares, access permissions (read/write/list), and allows reading/downloading files (and, when allowed, uploading).
+
+    -It’s built for penetration testers to quickly find interesting SMB resources and misconfigurations.
+
+🔹 Why use smbmap?
+
+    -Fast share enumeration across a host or subnet.
+
+    -Identifies writable shares which attackers can abuse (drop malware, exfiltrate data).
+
+    -Authenticated enumeration (shows more than anonymous access).
+
+    -Non-interactive so it’s easy to script and combine with other tools.
+
+    -Good complement to tools like smbclient, enum4linux, metasploit and impacket.
+
+🔹 Install (Kali)
+
+Kali usually includes smbmap. To install/update:
+
+    sudo apt update
+    sudo apt install smbmap
+
+🔹 What it does?
+
+    -Lists available SMB shares on a host or network.
+
+    -Shows effective permissions for each share (e.g., NO ACCESS, READ, WRITE, FULL).
+
+    -Allows file listing, downloading, and (when permitted) uploading.
+
+    -Supports anonymous (guest) and authenticated enumeration (username/password/domain).
+
+    -Can search shares for filename patterns and perform recursive downloads.
+
+🔹 Why it’s useful?
+
+    -Quickly finds misconfigured or world-writable shares attackers could exploit.
+
+    -Automates repetitive SMB checks across many hosts (good for red teams and audits).
+
+    -Reveals sensitive files left in shares (backups, credentials, configs) that manual checks may miss.
+
+    -Works well in scripts and pipelines (non-interactive output).
+
+🔹 Typical smbmap workflow & common commands
+
+1. Basic share listing (anonymous):
+
+   -smbmap -H 192.168.1.10
+
+2. Authenticated enumeration:
+
+   -smbmap -H 192.168.1.10 -u 'username' -p 'Password123' -d 'DOMAIN'
+
+3. Download a file:
+
+   -smbmap -H 192.168.1.10 -u user -p pass --download '/ShareName/path/file.docx'
+
+4. Recursive download of an entire share:
+
+   -smbmap -H 192.168.1.10 -u user -p pass --download --recursive 'ShareName'
+
+5. Recursive download of an entire share:
+
+   -smbmap -H 192.168.1.10 -u user -p pass --download --recursive 'ShareName'
+
+🔹 How to interpret results?
+
+    -Look for shares with WRITE or FULL — these are high-risk (can drop files, malware, or exfiltrate).
+
+    -NO ACCESS means no permission with given credentials; try authenticated creds if you have permission.
+
+    -Share names like Backups, Finance, Public or C$ are worth special attention.
+
+🔹 When to use alternative tools?
+
+    Use smbclient for interactive sessions (browse, get, put interactively).
+
+    Use impacket scripts for advanced authenticated actions or protocol-level manipulations.
+
+    Use enum4linux for broader Windows enumeration (users, groups, policies) in addition to shares.
