@@ -22,19 +22,19 @@
 
 🎯 Why use Recon-ng?
 
-    Automates and simplifies the information gathering phase of penetration testing.
+    -Automates and simplifies the information gathering phase of penetration testing.
 
-    Instead of running many different tools manually, Recon-ng integrates them in one framework.
+    -Instead of running many different tools manually, Recon-ng integrates them in one framework.
 
-    Helps ethical hackers, security researchers, and penetration testers to:
+    -Helps ethical hackers, security researchers, and penetration testers to:
 
-    Map the attack surface of a domain.
+    -Map the attack surface of a domain.
 
-    Collect data without alerting the target (passive reconnaissance).
+    -Collect data without alerting the target (passive reconnaissance).
 
-    Save results in workspaces for reporting and analysis.
+    -Save results in workspaces for reporting and analysis.
 
-    Use APIs from services like Shodan, Virustotal, Bing, etc.
+    -Use APIs from services like Shodan, Virustotal, Bing, etc.
 
 ⚙️ How to Use Recon-ng in Kali Linux?
 
